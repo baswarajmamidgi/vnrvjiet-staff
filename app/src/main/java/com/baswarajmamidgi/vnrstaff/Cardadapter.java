@@ -107,7 +107,9 @@ public class Cardadapter extends RecyclerView.Adapter<Cardadapter.MyViewHolder> 
                         }
                         case "Documents":
                         {
-                            context.startActivity(new Intent(context,Uploaddocs.class));
+                            Intent i=new Intent(context,Uploaddocs.class);
+                            i.putExtra("category","documents");
+                            context.startActivity(i);
                             break;
                         }
 

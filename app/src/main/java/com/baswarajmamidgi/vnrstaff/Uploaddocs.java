@@ -58,6 +58,7 @@ public class Uploaddocs extends AppCompatActivity implements NavigationView.OnNa
     private String selectedyear;
     private String selectedsection;
     private TextView filename;
+    private String category;
     private static int count=1;
 
 
@@ -66,22 +67,41 @@ public class Uploaddocs extends AppCompatActivity implements NavigationView.OnNa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_uploaddocs);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Upload documents");
-        setSupportActionBar(toolbar);
         filename= (TextView) findViewById(R.id.filename);
+        Button selectfile= (Button) findViewById(R.id.select);
+        imageView= (ImageView) findViewById(R.id.uploadimage);
+        Button submit= (Button) findViewById(R.id.submit);
+        final EditText rollno= (EditText)findViewById(R.id.rollno);
+        final BetterSpinner branchspinner= (BetterSpinner) findViewById(R.id.branch);
+        final BetterSpinner sectionsspinner= (BetterSpinner) findViewById(R.id.section);
+        final BetterSpinner yearspinner= (BetterSpinner) findViewById(R.id.year);
+        final String type;
+
+        Intent i=getIntent();
+        category=i.getStringExtra("category");
+        Log.i("log",category);
+        if(category.equals("Timetable")) {
+            toolbar.setTitle("Upload Timetable");
+            type="*/*";
+        }else{
+            toolbar.setTitle("Update documents");
+            type="*/*";
+
+
+        }
+        setSupportActionBar(toolbar);
 
 
         mStorageRef = FirebaseStorage.getInstance(com.google.firebase.FirebaseApp.initializeApp(Uploaddocs.this)).getReference();
         firebaseDatabase=FirebaseDatabase.getInstance();
 
-        Button selectfile= (Button) findViewById(R.id.select);
-         imageView= (ImageView) findViewById(R.id.uploadimage);
         selectfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(Intent.ACTION_GET_CONTENT);
-                i.setType("*/*");
+                i.setType(type);
                 startActivityForResult(Intent.createChooser(i,"select file") ,gallery);
             }
         });
@@ -90,14 +110,6 @@ public class Uploaddocs extends AppCompatActivity implements NavigationView.OnNa
         final String[] branches=new String[]{"AE","CE","CSE","ECE","EEE","EIE","IT","ME"};
         final  String[] sections=new String[]{"1","2","3","4"};
         final String[] year=new String[]{"1","2","3","4"};
-
-        Button submit= (Button) findViewById(R.id.submit);
-        final EditText rollno= (EditText)findViewById(R.id.rollno);
-        final BetterSpinner branchspinner= (BetterSpinner) findViewById(R.id.branch);
-        final BetterSpinner sectionsspinner= (BetterSpinner) findViewById(R.id.section);
-        final BetterSpinner yearspinner= (BetterSpinner) findViewById(R.id.year);
-
-
 
         final ArrayAdapter<String> branchadapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,branches);
         branchspinner.setAdapter(branchadapter);
@@ -228,9 +240,17 @@ public class Uploaddocs extends AppCompatActivity implements NavigationView.OnNa
                     progressDialog.dismiss();
                     Toast.makeText(Uploaddocs.this, "doc uploaded", Toast.LENGTH_SHORT).show();
                     Fileupload fileupload=new Fileupload(uploadfilename,taskSnapshot.getDownloadUrl().toString());
-                    databaseReference=firebaseDatabase.getReference().child("documents").child(selectedbranch).child(selectedyear).child(selectedsection).child(String.valueOf(count));
-                    count++;
-                    databaseReference.setValue(fileupload);
+                    if(category.equals("Timetable") ){
+                        databaseReference = firebaseDatabase.getReference().child(category).child(selectedbranch).child(selectedyear).child(selectedsection);
+                        databaseReference.setValue(taskSnapshot.getDownloadUrl().toString());
+                        Log.i("log","timetable");
+
+                    }else {
+                        databaseReference = firebaseDatabase.getReference().child(category).child(selectedbranch).child(selectedyear).child(selectedsection).child(String.valueOf(count));
+                        databaseReference.setValue(fileupload);
+                        count++;
+
+                    }
                     finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -255,12 +275,19 @@ public class Uploaddocs extends AppCompatActivity implements NavigationView.OnNa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.overflowmenu,menu);
+        getMenuInflater().inflate(R.menu.documents_menu,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.timetable){
+            Intent i=new Intent(Uploaddocs.this, Uploaddocs.class);
+            i.putExtra("category","Timetable");
+            startActivity(i);
+
+        }
+
         if(item.getItemId()==R.id.help){
             startActivity(new Intent(Uploaddocs.this, feedback.class));
         }

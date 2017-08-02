@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -150,6 +151,7 @@ public class Timetable extends AppCompatActivity implements NavigationView.OnNav
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             String url = dataSnapshot.getValue(String.class);
+                            Log.i("log",url);
 
                             Glide.with(Timetable.this).load(url)
                                     .placeholder(R.drawable.loading)
