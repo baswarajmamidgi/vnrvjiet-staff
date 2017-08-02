@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="Home"
+            android:icon="@drawable/ic_home"/>
+        <item
+            android:id="@+id/timetable"
+            android:title="Time Table"
+            android:icon="@drawable/ic_event"/>
+        <item
+            android:id="@+id/syallabus"
+            android:icon="@drawable/ic_subject"
+            android:title="Syllabus" />
+        <item
+            android:id="@+id/clubs"
+            android:icon="@drawable/ic_group"
+            android:title="Clubs" />
+
+        <item
+                android:id="@+id/chapter"
+            android:icon="@drawable/ic_domain"
+                android:title="Student Chapters" />
+
+        <item
+            android:id="@+id/contacts"
+            android:icon="@drawable/phone"
+            android:title="Important Contacts" />
+
+        <item
+            android:id="@+id/collegemap"
+            android:icon="@drawable/ic_map"
+            android:title="College Map" />
+        <item
+            android:id="@+id/documents"
+            android:icon="@drawable/documents"
+            android:title="Download documents" />
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_account_circle"
+            android:title="Edit Profile"/>
+        <item
+            android:id="@+id/website"
+            android:icon="@drawable/ic_web_asset"
+            android:title="Web site"/>
+        <item
+            android:id="@+id/youtube"
+            android:icon="@drawable/youtubemini"
+            android:title="You Tube"/>
+        <item
+            android:id="@+id/Feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="Feedback"/>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/exit"
+            android:title="Log Out"/>
+
+
+
+
+    </group>
+
+</menu>

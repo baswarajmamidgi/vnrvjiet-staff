@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="8dp"
+        android:theme="@style/toolbartheme"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/toolbar"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout">
+
+
+        <com.weiwangcn.betterspinner.library.BetterSpinner
+            android:id="@+id/branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:hint="select branch" />
+
+
+        <com.weiwangcn.betterspinner.library.BetterSpinner
+            android:id="@+id/year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/branch"
+            android:layout_marginTop="20dp"
+            android:hint="select year" />
+
+        <com.weiwangcn.betterspinner.library.BetterSpinner
+            android:id="@+id/section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/year"
+            android:layout_marginTop="20dp"
+            android:hint="select section" />
+
+
+        <ImageView
+            android:id="@+id/uploadimage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/section"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:text="Select file"
+            tools:ignore="HardcodedText"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="8dp"
+            android:textColor="@color/white"
+            android:theme="@style/MyButton"
+            android:layout_below="@+id/uploadimage"
+            android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="buttonupload"
+        android:layout_below="@+id/uploadimage"
+        android:layout_alignRight="@+id/select"
+        android:text="upload"
+        tools:ignore="HardcodedText"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
+        android:textColor="@color/white"
+        android:theme="@style/MyButton"
+        android:layout_alignBaseline="@+id/select"
+        android:layout_alignBottom="@+id/select"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp" />
+
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/filename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="141dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+</RelativeLayout>

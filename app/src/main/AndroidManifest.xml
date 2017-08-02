@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baswarajmamidgi.vnrstaff">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.baswarajmamidgi.vnrstaff.FirebaseApp"
+        android:allowBackup="true"
+        android:icon="@drawable/vnr"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <activity
+            android:name="com.baswarajmamidgi.vnrstaff.MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Library" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.ClubsandStudentchapters" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Faculty" />
+
+        <service android:name="com.baswarajmamidgi.vnrstaff.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Viewclubdetails" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Notifications" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Workshopslist" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.MiscContacts" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.feedback" />
+        <activity
+            android:name="com.baswarajmamidgi.vnrstaff.SplashScreen"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Gallery" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Timetable" />
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Syllabus"/>
+        <activity android:name="com.baswarajmamidgi.vnrstaff.Uploaddocs"></activity>
+        <activity android:name=".Loginactivity"/>
+
+        <activity android:name=".Login"/>
+
+        <activity android:name=".Register"/>
+    </application>
+
+</manifest>

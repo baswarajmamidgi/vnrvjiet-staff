@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.baswarajmamidgi.vnrfaculty.Faculty">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/toolbartheme"
+
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:elevation="8dp" />
+
+
+        <RelativeLayout
+            android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            app:srcCompat="@drawable/vnrlogo"
+            android:id="@+id/hodimage"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/hodemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/hodname"
+                android:layout_below="@+id/hodname"
+                android:layout_marginTop="16dp"
+                android:autoLink="email"
+                android:text="HOD EMAIL"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="HOD:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hodtitle"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/black"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/hodname"
+                android:paddingTop="2dp" />
+
+            <TextView
+                android:id="@+id/hodname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hodtitle"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@+id/hodimage"
+                android:text="HOD NAME"
+                android:textColor="@android:color/black" />
+
+
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/line"
+            android:layout_below="@+id/hodimage"
+            android:background="@android:color/darker_gray"
+            android:paddingLeft="4dp"
+            android:paddingRight="3dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            tools:ignore="RtlHardcoded" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/line"
+            android:layout_marginTop="170dp">
+
+            <TextView
+                android:text="Faculty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="normal|bold"
+                android:textSize="22sp"
+                tools:ignore="RtlHardcoded" />
+
+            <ListView
+                android:id="@+id/stafflist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:verticalScrollbarPosition="right" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
