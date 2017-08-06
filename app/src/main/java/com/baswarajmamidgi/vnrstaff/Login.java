@@ -1,5 +1,6 @@
 package com.baswarajmamidgi.vnrstaff;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -105,6 +106,10 @@ public class Login extends AppCompatActivity {
             return;
         }
 
+        final ProgressDialog progressDialog=new ProgressDialog(Login.this);
+        progressDialog.setTitle("Authenticating...");
+        progressDialog.setMessage("Please wait");
+        progressDialog.show();
 
 
 
@@ -114,6 +119,8 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
+                    progressDialog.dismiss();
+
                     Toast.makeText(Login.this, "Login success", Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(i);
@@ -121,6 +128,8 @@ public class Login extends AppCompatActivity {
                 }
                 else
                 {
+                    progressDialog.dismiss();
+
 
                     Toast.makeText(Login.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
